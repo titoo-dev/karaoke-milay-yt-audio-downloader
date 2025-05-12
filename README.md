@@ -18,7 +18,7 @@ make build
 
 2. Run the container:
 ```bash
-make run
+make run YOUTUBE_URL="your-youtube-url"
 ```
 
 3. To clean up (remove container and image):
