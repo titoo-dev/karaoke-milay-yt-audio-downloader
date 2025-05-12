@@ -1,9 +1,9 @@
 from pytubefix import YouTube
 import argparse
 
-def download_youtube_audio(video_url, output_path=".", use_oauth=True):
+def download_youtube_audio(video_url, output_path="."):
     try:
-        yt = YouTube(video_url, use_oauth=use_oauth, allow_oauth_cache=True)
+        yt = YouTube(video_url)
         audio_stream = yt.streams.get_audio_only()
         
         print(f"Downloading: {yt.title}")
@@ -19,11 +19,10 @@ def main():
     parser = argparse.ArgumentParser(description='Download YouTube video audio')
     parser.add_argument('url', help='YouTube video URL')
     parser.add_argument('--output', '-o', default=".", help='Output directory path')
-    parser.add_argument('--no-oauth', action='store_false', help='Disable OAuth authentication')
     
     args = parser.parse_args()
     
-    download_youtube_audio(args.url, args.output, args.no_oauth)
+    download_youtube_audio(args.url, args.output)
 
 if __name__ == "__main__":
     main()
